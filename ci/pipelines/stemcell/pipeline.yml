@@ -43,10 +43,12 @@ jobs:
     serial: true
     plan:
       - get: bosh-src
-        trigger: false
+      - get: ubuntu-trusty-os-image
+      - get: centos-7-os-image
+      - get: bosh-release
       - get: version
         params:
-          bump: minor
+          bump: major
       - put: version
         params:
           file: version/number
@@ -98,14 +100,16 @@ jobs:
   - name: build-aws-xen-ubuntu-trusty
     plan:
       - aggregate:
-          - get: bosh-src
-          - get: bosh-release
-          - get: os-image
-            resource: ubuntu-trusty-os-image
           - get: version
             trigger: true
-            passed:
-              - build-stemcell
+            passed: [build-stemcell]
+          - get: bosh-src
+            passed: [build-stemcell]
+          - get: bosh-release
+            passed: [build-stemcell]
+          - get: os-image
+            resource: ubuntu-trusty-os-image
+            passed: [build-stemcell]
       - task: create-stemcell
         file: bosh-src/ci/pipelines/stemcell/tasks/build.yml
         privileged: true
@@ -122,14 +126,16 @@ jobs:
   - name: build-aws-xen-centos-7
     plan:
       - aggregate:
-          - get: bosh-src
-          - get: bosh-release
-          - get: os-image
-            resource: centos-7-os-image
           - get: version
             trigger: true
-            passed:
-              - build-stemcell
+            passed: [build-stemcell]
+          - get: bosh-src
+            passed: [build-stemcell]
+          - get: bosh-release
+            passed: [build-stemcell]
+          - get: os-image
+            resource: centos-7-os-image
+            passed: [build-stemcell]
       - task: create-stemcell
         file: bosh-src/ci/pipelines/stemcell/tasks/build.yml
         privileged: true
@@ -150,14 +156,16 @@ jobs:
   - name: build-openstack-kvm-ubuntu-trusty
     plan:
       - aggregate:
-          - get: bosh-src
-          - get: bosh-release
-          - get: os-image
-            resource: ubuntu-trusty-os-image
           - get: version
             trigger: true
-            passed:
-              - build-stemcell
+            passed: [build-stemcell]
+          - get: bosh-src
+            passed: [build-stemcell]
+          - get: bosh-release
+            passed: [build-stemcell]
+          - get: os-image
+            resource: ubuntu-trusty-os-image
+            passed: [build-stemcell]
       - task: create-stemcell
         file: bosh-src/ci/pipelines/stemcell/tasks/build.yml
         privileged: true
@@ -178,14 +186,16 @@ jobs:
   - name: build-openstack-kvm-centos-7
     plan:
       - aggregate:
-          - get: bosh-src
-          - get: bosh-release
-          - get: os-image
-            resource: centos-7-os-image
           - get: version
             trigger: true
-            passed:
-              - build-stemcell
+            passed: [build-stemcell]
+          - get: bosh-src
+            passed: [build-stemcell]
+          - get: bosh-release
+            passed: [build-stemcell]
+          - get: os-image
+            resource: centos-7-os-image
+            passed: [build-stemcell]
       - task: create-stemcell
         file: bosh-src/ci/pipelines/stemcell/tasks/build.yml
         privileged: true
@@ -210,14 +220,16 @@ jobs:
   - name: build-vsphere-esxi-ubuntu-trusty
     plan:
       - aggregate:
-          - get: bosh-src
-          - get: bosh-release
-          - get: os-image
-            resource: ubuntu-trusty-os-image
           - get: version
             trigger: true
-            passed:
-              - build-stemcell
+            passed: [build-stemcell]
+          - get: bosh-src
+            passed: [build-stemcell]
+          - get: bosh-release
+            passed: [build-stemcell]
+          - get: os-image
+            resource: ubuntu-trusty-os-image
+            passed: [build-stemcell]
       - task: create-stemcell
         file: bosh-src/ci/pipelines/stemcell/tasks/build.yml
         privileged: true
@@ -234,14 +246,16 @@ jobs:
   - name: build-vsphere-esxi-centos-7
     plan:
       - aggregate:
-          - get: bosh-src
-          - get: bosh-release
-          - get: os-image
-            resource: centos-7-os-image
           - get: version
             trigger: true
-            passed:
-              - build-stemcell
+            passed: [build-stemcell]
+          - get: bosh-src
+            passed: [build-stemcell]
+          - get: bosh-release
+            passed: [build-stemcell]
+          - get: os-image
+            resource: centos-7-os-image
+            passed: [build-stemcell]
       - task: create-stemcell
         file: bosh-src/ci/pipelines/stemcell/tasks/build.yml
         privileged: true
@@ -262,14 +276,16 @@ jobs:
   - name: build-vcloud-esxi-ubuntu-trusty
     plan:
       - aggregate:
-          - get: bosh-src
-          - get: bosh-release
-          - get: os-image
-            resource: ubuntu-trusty-os-image
           - get: version
             trigger: true
-            passed:
-              - build-stemcell
+            passed: [build-stemcell]
+          - get: bosh-src
+            passed: [build-stemcell]
+          - get: bosh-release
+            passed: [build-stemcell]
+          - get: os-image
+            resource: ubuntu-trusty-os-image
+            passed: [build-stemcell]
       - task: create-stemcell
         file: bosh-src/ci/pipelines/stemcell/tasks/build.yml
         privileged: true
