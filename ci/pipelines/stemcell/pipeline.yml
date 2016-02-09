@@ -65,51 +65,52 @@ jobs:
           - build-aws-xen-centos-7
           - build-openstack-kvm-centos-7
           - build-vsphere-esxi-centos-7
-      - do:
-        - get: aws-xen-ubuntu-trusty-tarball-wip
-        - put: aws-xen-ubuntu-trusty-tarball
-          params:
-            file: aws-xen-ubuntu-trusty-tarball-wip/*.tgz
-      - do:
-        - get: openstack-kvm-ubuntu-trusty-tarball-wip
-        - put: openstack-kvm-ubuntu-trusty-tarball
-          params:
-            file: openstack-kvm-ubuntu-trusty-tarball-wip/*.tgz
-      - do:
-        - get: vsphere-esxi-ubuntu-trusty-tarball-wip
-        - put: vsphere-esxi-ubuntu-trusty-tarball
-          params:
-            file: vsphere-esxi-ubuntu-trusty-tarball-wip/*.tgz
-      - do:
-        - get: vcloud-esxi-ubuntu-trusty-tarball-wip
-        - put: vcloud-esxi-ubuntu-trusty-tarball
-          params:
-            file: vcloud-esxi-ubuntu-trusty-tarball-wip/*.tgz
-      - do:
-        - get: aws-xen-centos-7-tarball-wip
-        - put: aws-xen-centos-7-tarball
-          params:
-            file: aws-xen-centos-7-tarball-wip/*.tgz
-      - do:
-        - get: openstack-kvm-centos-7-tarball-wip
-        - put: openstack-kvm-centos-7-tarball
-          params:
-            file: openstack-kvm-centos-7-tarball-wip/*.tgz
-      - do:
-        - get: vsphere-esxi-centos-7-tarball-wip
-        - put: vsphere-esxi-centos-7-tarball
-          params:
-            file: vsphere-esxi-centos-7-tarball-wip/*.tgz
-      - do:
-        - get: openstack-kvm-ubuntu-trusty-raw-tarball-wip
-        - put: openstack-kvm-ubuntu-trusty-raw-tarball
-          params:
-            file: openstack-kvm-ubuntu-trusty-raw-tarball-wip/*.tgz
-      - do:
-        - get: openstack-kvm-centos-7-raw-tarball-wip
-        - put: openstack-kvm-centos-7-raw-tarball
-          params:
-            file: openstack-kvm-centos-7-raw-tarball-wip/*.tgz
+      - aggregate:
+        - do:
+          - get: aws-xen-ubuntu-trusty-tarball-wip
+          - put: aws-xen-ubuntu-trusty-tarball
+            params:
+              file: aws-xen-ubuntu-trusty-tarball-wip/*.tgz
+        - do:
+          - get: openstack-kvm-ubuntu-trusty-tarball-wip
+          - put: openstack-kvm-ubuntu-trusty-tarball
+            params:
+              file: openstack-kvm-ubuntu-trusty-tarball-wip/*.tgz
+        - do:
+          - get: vsphere-esxi-ubuntu-trusty-tarball-wip
+          - put: vsphere-esxi-ubuntu-trusty-tarball
+            params:
+              file: vsphere-esxi-ubuntu-trusty-tarball-wip/*.tgz
+        - do:
+          - get: vcloud-esxi-ubuntu-trusty-tarball-wip
+          - put: vcloud-esxi-ubuntu-trusty-tarball
+            params:
+              file: vcloud-esxi-ubuntu-trusty-tarball-wip/*.tgz
+        - do:
+          - get: aws-xen-centos-7-tarball-wip
+          - put: aws-xen-centos-7-tarball
+            params:
+              file: aws-xen-centos-7-tarball-wip/*.tgz
+        - do:
+          - get: openstack-kvm-centos-7-tarball-wip
+          - put: openstack-kvm-centos-7-tarball
+            params:
+              file: openstack-kvm-centos-7-tarball-wip/*.tgz
+        - do:
+          - get: vsphere-esxi-centos-7-tarball-wip
+          - put: vsphere-esxi-centos-7-tarball
+            params:
+              file: vsphere-esxi-centos-7-tarball-wip/*.tgz
+        - do:
+          - get: openstack-kvm-ubuntu-trusty-raw-tarball-wip
+          - put: openstack-kvm-ubuntu-trusty-raw-tarball
+            params:
+              file: openstack-kvm-ubuntu-trusty-raw-tarball-wip/*.tgz
+        - do:
+          - get: openstack-kvm-centos-7-raw-tarball-wip
+          - put: openstack-kvm-centos-7-raw-tarball
+            params:
+              file: openstack-kvm-centos-7-raw-tarball-wip/*.tgz
 
   #
   # aws
